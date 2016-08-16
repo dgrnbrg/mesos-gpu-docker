@@ -1,0 +1,10 @@
+FROM mesos-build
+MAINTAINER David Greenberg <dgrnbrg.consulting@gmail.com>
+
+ENTRYPOINT ["mesos-execute", \
+            "--master=127.0.0.1:5050", \
+            "--name=gpu-test", \
+            "--env={\"LD_LIBRARY_PATH\":\"/usr/local/nvidia/lib:/usr/local/nvidia/lib64\", \"PATH\":\"/usr/local/nvidia/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"}", \
+            "--command=/usr/local/nvidia/bin/nvidia-smi", \
+            "--framework_capabilities=GPU_RESOURCES", \
+            "--resources=gpus:1"]

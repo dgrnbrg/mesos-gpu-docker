@@ -2,15 +2,22 @@
 
 set -e
 
+sudo yum update -y
+sudo yum install -y docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+
+if [ ! -f packages_installed ]; then
+  touch packages_installed
+  echo "Log back in and we'll be working"
+  logout
+fi
+
 : ${IMAGES:="mesos-base
              mesos-build
-             mesos-update
              mesos-master
              mesos-agent
-             marathon-base
-             marathon-build
-             marathon-update
-             marathon
+             mesos-gpu-execute
              zookeeper"}
 
 # Build the images

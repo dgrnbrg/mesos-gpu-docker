@@ -31,3 +31,5 @@ RUN yum install -y java-1.8.0-openjdk-devel \
 RUN git clone https://github.com/apache/mesos.git
 
 WORKDIR /mesos
+
+RUN git checkout 1.0.0

@@ -57,15 +57,3 @@ nvidia-docker run \
     --privileged \
     --name mesos-agent \
     mesos-agent
-
-# Run Marathon
-docker_rm marathon
-docker run \
-    -d \
-    -p 8080:8080 \
-    -p 60035:60035 \
-    --net="host" \
-    -e "LIBPROCESS_IP=$LIBPROCESS_IP" \
-    -e "MARATHON_HOSTNAME=$HOSTNAME" \
-    --name marathon \
-    marathon

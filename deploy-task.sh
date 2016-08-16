@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
 
-CONFIG=$(cat << EOF
-{
-    "id": "gpu-test", 
-    "cmd": "nvidia-smi; sleep 60;",
-    "cpus": 0.1,
-    "mem": 128.0,
-    "gpus": 2,
-    "instances": 1
-}
-EOF
-)
+: ${HOSTNAME:="localhost"}
+: ${LIBPROCESS_IP:="127.0.0.1"}
 
-if [ "$1" = "--remove" ]; then
-    curl -X DELETE http://localhost:8080/v2/apps/test-gpus
-else
-    curl -X POST http://localhost:8080/v2/apps \
-         -d @<(echo ${CONFIG}) \
-         -H "Content-type: application/json"
-fi
-echo ""
+docker_rm() {
+    if [ "$(docker ps --filter "name=$1" -a -q)" != "" ]; then
+        docker rm -f "$1"
+    fi
+}
+
+docker_rm mesos-gpu-execute
+docker run \
+    --net="host" \
+    -e "LIBPROCESS_IP=$LIBPROCESS_IP" \
+    --name mesos-gpu-execute \
+    mesos-gpu-execute
+
+sleep 1
+
+docker logs mesos-agent
+
+docker exec -t -i mesos-agent /bin/bash

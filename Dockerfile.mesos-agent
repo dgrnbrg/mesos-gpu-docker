@@ -1,4 +1,4 @@
-FROM mesos-update
+FROM mesos-build
 MAINTAINER Kevin Klues <klueska@mesosphere.com>
 
 # Calling 'nvidia-docker run' will perform something
@@ -20,8 +20,10 @@ RUN rm -rf /opt/nvidia-gdk && \
     rm -rf /etc/ld.so.conf.d/nvidia-lib64.conf && \
     ldconfig
 
+RUN touch /usr/local/bin/nvidia-persistenced && chmod +x /usr/local/bin/nvidia-persistenced
+
 ENTRYPOINT ["mesos-agent", \
-            "--master=zk://localhost:2181/mesos", \
+            "--master=127.0.0.1:5050", \
             "--launcher=posix", \
             "--containerizers=mesos", \
             "--isolation=cgroups/devices,gpu/nvidia", \

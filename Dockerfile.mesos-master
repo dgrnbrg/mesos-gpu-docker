@@ -1,8 +1,8 @@
-FROM mesos-update
+FROM mesos-build
 MAINTAINER Kevin Klues <klueska@mesosphere.com>
 
 ENTRYPOINT ["mesos-master", \
-            "--zk=zk://localhost:2181/mesos", \
+            "--ip=127.0.0.1", \
             "--quorum=1", \
             "--work_dir=/var/lib/mesos", \
             "--log_dir=/var/log/mesos", \

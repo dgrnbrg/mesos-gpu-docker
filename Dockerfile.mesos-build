@@ -6,4 +6,4 @@ RUN rm -rf build && \
     ./bootstrap && \
     cd build && \
     ../configure && \
-    make -j install
+    make -j 8 install
