@@ -1,7 +1,7 @@
 # Getting Started
 
 Clone this repo on an Nvidia GPU equipped machine with at least 2 GPUs
-(g2.8xlarge instances will do nicely).
+(g2.8xlarge instances will do nicely). This repo will work with [this AMI](https://aws.amazon.com/marketplace/ordering?productId=d3fbf14b-243d-46e0-916c-82a8bf6955b4&region=us-west-2).
 
 Then run:
 
