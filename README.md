@@ -9,15 +9,12 @@ Then run:
     ./run.sh
     ./deploy-task.sh
 
-Navigate to marathon UI:
+You should see that `mesos-execute` submitted your task successfully by the
+`TASK_FINISHED` message.
 
-    http://<your-ip>:8080
-
-Verify that the task is running.
-
-Go to the Mesos UI and look at the `stdout` of the task:
-
-    http://<your-ip>:5050
+Then, you'll see the agent's logs get printed out, and you'll be dropped into
+a shell inside the agent's container. Using the agent's logs, you can find the
+directory in which stdout/stderr were written. Now `cat` the `stdout` you found:
 
 If it says the following, you've got problems:
 
