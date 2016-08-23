@@ -47,4 +47,6 @@ If it prints something, like the following, you are good to go:
     |=============================================================================|
     |  No running processes found                                                 |
     +-----------------------------------------------------------------------------+
+    
+Visit [dgrnbrg.com](http://dgrnbrg.com) for information regarding services to enable this on your own cluster.
 
