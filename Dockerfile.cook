@@ -7,7 +7,7 @@ RUN git clone https://github.com/dgrnbrg/Cook.git && curl -O https://raw.githubu
 
 WORKDIR /Cook/scheduler
 
-RUN git checkout 40e55081ee7c792f82cebcb491c5300eba9a1644
+RUN git checkout 40e55081ee7c792f82cebcb491c5300eba9a1644 && lein deps
 
 ENTRYPOINT ["/lein", \
             "run", \
