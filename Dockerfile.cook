@@ -1,0 +1,14 @@
+FROM mesos-build
+MAINTAINER David Greenberg <dgrnbrg.consulting@gmail.com>
+
+WORKDIR /
+
+RUN git clone https://github.com/dgrnbrg/Cook.git && curl -O https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && chmod +x lein
+
+WORKDIR /Cook/scheduler
+
+RUN git checkout 40e55081ee7c792f82cebcb491c5300eba9a1644
+
+ENTRYPOINT ["/lein", \
+            "run", \
+            "dev-config.edn"]

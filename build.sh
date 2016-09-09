@@ -18,7 +18,8 @@ fi
              mesos-master
              mesos-agent
              mesos-gpu-execute
-             zookeeper"}
+             zookeeper
+             cook"}
 
 # Build the images
 for image in ${IMAGES}; do
