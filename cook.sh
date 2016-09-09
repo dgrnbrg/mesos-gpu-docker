@@ -13,6 +13,7 @@ docker_rm cook
 docker run \
     --net="host" \
     -e "LIBPROCESS_IP=$LIBPROCESS_IP" \
+    -e "MESOS_NATIVE_LIBRARY=/usr/local/lib/libmesos.so" \
     --name cook \
     cook
 
