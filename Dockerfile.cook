@@ -9,7 +9,7 @@ WORKDIR /Cook/scheduler
 
 RUN git checkout gpu-scheduler
 
-COPY ../cook.jar cook.jar
+COPY cook.jar cook.jar
 
 ENTRYPOINT ["java", \
             "-jar", \
