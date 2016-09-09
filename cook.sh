@@ -16,9 +16,3 @@ docker run \
     -e "MESOS_NATIVE_LIBRARY=/usr/local/lib/libmesos.so" \
     --name cook \
     cook
-
-sleep 1
-
-docker logs mesos-agent
-
-docker exec -t -i mesos-agent /bin/bash
